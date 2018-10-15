@@ -1,0 +1,18 @@
+# Suppression file for false positives for valgrind memcheck
+# Usage: valgrind --suppressions=[path/to/]valgrind.supp
+# For instance, inside the folder Debug/ a typical execution would be: 
+# make tests/test_fat_tree && valgrind --suppressions=../valgrind.supp  -- ./tests/test_fat_tree sequential
+
+
+# Freaking error with LOG_VERBOSE() when executing the tests
+# LOG_VERBOSE depends on config().verbose() which *should* be always initialised
+{
+	log_verbose_density_bounds
+	Memcheck:Cond
+	fun:_ZN3pma13DensityBoundsC1Edddd
+}
+{
+	pin_thread_to_cpu_config_verbose
+	Memcheck:Cond
+	fun:_Z17pin_thread_to_cpuib
+}

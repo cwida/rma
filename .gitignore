@@ -1,0 +1,29 @@
+# Project files
+/.cproject
+/.project
+/.settings/
+/eclipse_symbols_debug.xml
+/*.komodoproject
+*.idea
+*.iml
+/scripts/_Deparsed_XSubs.pm
+
+# Builds
+/build
+/Debug
+/Release
+
+# Autoconf
+/autom4te.cache/
+/configure
+/third-party/masstree/configure
+/third-party/masstree/autom4te.cache
+
+# Python
+/scripts/__pycache__/
+
+# Logs
+/scripts/logs/
+
+# Backup files
+*.bck
