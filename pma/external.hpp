@@ -1,11 +1,22 @@
-/*
- * pma_external.hpp
+/**
+ * Wrappers for the public implementations retrieved from github, to present the same
+ * interface (PMA_Interface)
  *
- *  Created on: 10 Sep 2017
- *      Author: Dean De Leo
+ * Copyright (C) 2018 Dean De Leo, email: dleo[at]cwi.nl
  *
- *  Wrappers for the public implementations retrieved from github, to present the same
- *  interface (PMA_Interface)
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ *
  */
 
 #ifndef PMA_EXTERNAL_HPP_

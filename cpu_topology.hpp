@@ -2,7 +2,7 @@
  * cpu_topology.hpp
  *
  *  Created on: 27 Sep 2012
- *      Author: Dean De Leo (deandeleo@gmx.com)
+ *      Author: Dean De Leo (deandeleo[at]gmx.com)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
