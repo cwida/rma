@@ -334,7 +334,7 @@ The last graph, Figure 14, in the paper shows the cumulative contribution of eac
 ./pmacomp -e step_insert_lookup -I 1073741824 -d zipf --alpha 1 --beta 134217728 -a btreecc_pma7b -b 65 -l 128 --hugetlb --extent_size 1 -v
 ./pmacomp -e step_insert_lookup -I 1073741824 -d zipf --alpha 1.5 --beta 134217728 -a btreecc_pma7b -b 65 -l 128 --hugetlb --extent_size 1 -v
 ./pmacomp -e range_query -I 1073741824 -L 1024 --rqint 0.01 -d uniform -a btreecc_pma7b -65 -l 128 --hugetlb --extent_size 1 -v
-# Adaptive rebalancing, soruce code: pma/adaptive/int2/*
+# Adaptive rebalancing, source code: pma/adaptive/int2/*
 ./pmacomp -e step_insert_lookup -I 1073741824 -d uniform -a apma_int2b -b 65 -l 128 --hugetlb --extent_size 1 -v
 ./pmacomp -e step_insert_lookup -I 1073741824 -d apma_sequential -a apma_int2b -b 65 -l 128 --hugetlb --extent_size 1 -v
 ./pmacomp -e step_insert_lookup -I 1073741824 -d zipf --alpha 1 --beta 134217728 -a apma_int2b -b 65 -l 128 --hugetlb --extent_size 1 -v
