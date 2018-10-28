@@ -191,7 +191,7 @@ For the third plot, Figure 1c, final contributions:
 
 ##### Node and segment size
 
-These are the simulations whose outcomes are represented in Figure 10, where ART+B-Tree is compared to RMA at different leaf/segment capacities.
+These are the simulations whose outcomes are represented in Figure 10, where the ART+B-Tree is compared to the RMA at different leaf/segment capacities.
 
 ```bash
 for B in 32 128 512 2048; do 
@@ -204,9 +204,9 @@ for B in 32 128 512 2048; do
 done
 ```
 
-The paper mentions the difference with the STX-Tree [8]. To repeat this simulation:
+The paper mentions the difference with the STX-Tree [8]. To repeat this experiment:
 ```bash
-# In the STX-Tree, the node and leaf capacities must be specified at compile time. Compile the driver passing:
+# In the STX-Tree, the node and leaf capacities must be specified at compile time. Compile the driver with:
 make EXTRA_CXXFLAGS="-DSTX_BTREE_INDEX_B=64 -DSTX_BTREE_LEAF_B=128" -j
 # To run the experiments:
 ./pmacomp -e step_insert_lookup -I 1073741824 -L 33554432 -d uniform -a btree_stx -b 64 -l 128 -v
@@ -214,7 +214,7 @@ make EXTRA_CXXFLAGS="-DSTX_BTREE_INDEX_B=64 -DSTX_BTREE_LEAF_B=128" -j
 ```
 
 ##### Adaptive rebalancing
-Comparison of RMA with adaptive rebalancing turned on and off and with the original APMA strategy [7]. These outcomes are reported in Figure 11.
+This is the comparison of the RMA with adaptive rebalancing turned on and off and with the original APMA strategy [7]. The outcomes of this experiment are showed in the paper in Figure 11.
 ```bash
 # RMA without adaptive rebalancing, source code: pma/btree/btreepmacc7.*
 ./pmacomp -e step_insert_lookup -I 1073741824 -d uniform -a btreecc_pma7b -b 65 -l 128 --hugetlb --extent_size 1 -v
@@ -241,8 +241,8 @@ done
 
 ##### Density thresholds
 
-This section compares the update thresholds with the scan thresholds in terms of insertion and scan throughput. In the paper, the results are depicted in Figure 12. 
-The graphs also report the results for the same experiment for the (a,b)-tree and static dense array. 
+This section compares the update thresholds with the scan thresholds in terms of both the insertion and the scan throughput. In the paper, the results are depicted in Figure 12. 
+The graphs also show the results of the same experiment for the (a,b)-tree and the static dense array. 
 
 ```bash
 # (a,b)-tree, source code: abtree/abtree.*
@@ -260,7 +260,7 @@ The graphs also report the results for the same experiment for the (a,b)-tree an
 
 ##### Aging
 
-In the paper, figure 13a shows how the throughput of scans in built (a,b)-trees deteriorates once random updates are executed. 
+In the paper, Figure 13a shows how the throughput of scans in built (a,b)-trees deteriorates once random updates are executed. 
 
 ```bash
 # Source code: abtree/abtree.*, experiment: pma/experiments/aging.*
