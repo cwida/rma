@@ -7,6 +7,7 @@
 *.idea
 *.iml
 /scripts/_Deparsed_XSubs.pm
+/.README.md.html
 
 # Builds
 /build
