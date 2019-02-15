@@ -2,7 +2,7 @@
 Introduction
 ---
 
-This is the source code of the implementation and the experiments featured in the paper ''Packed memory arrays - Rewired''. It 
+This is the source code of the implementation and of the experiments featured in the paper ''Packed memory arrays - Rewired''. It 
 consists of a single program, `pmacomp`, inclusive of the data structures tested and the code to run the simulations.
 Since the program makes use of a few O.S. dependent constructs (`libnuma`, `memfd_create`), it only supports Linux.
 
@@ -185,8 +185,8 @@ For the third plot, Figure 1c, final contributions:
 ./pmacomp -e step_insert_lookup -I 1073741824 -d zipf --alpha 1 --beta 134217728 -a apma_int2b -b 65 -l 256 --hugetlb --extent_size 1 -v
 ./pmacomp -e step_insert_lookup -I 1073741824 -d zipf --alpha 1.5 --beta 134217728 -a apma_int2b -b 65 -l 256 --hugetlb --extent_size 1 -v
 ./pmacomp -e range_query -I 1073741824 -L 1024 --rqint 0.01 -d uniform -a apma_int2b -b 65 -l 256 --hugetlb --extent_size 1 -v
-# Static dense arrays, source code: abtree/static_abtree.*
-./pmacomp -e range_query -I 1073741824 -L 1024 --rqint 0.01 -d uniform -a static -b 64 -v
+# Static dense arrays, source code: abtree/dense_array.*
+./pmacomp -e range_query -I 1073741824 -L 1024 --rqint 0.01 -d uniform -a dense_array -l 64 --hugetlb -v
 ```
 
 ##### Node and segment size
@@ -255,7 +255,7 @@ The graphs also show the results of the same experiment for the (a,b)-tree and t
 ./pmacomp -e step_idls --initial_size 16777216 -I 1073741824 --idls_group_size 16777216 --num_scans 16 -d uniform --beta 134217728 -a apma_int3 -b 65 -l 128 --hugetlb --extent_size 1 -v
 ./pmacomp -e step_idls --initial_size 16777216 -I 1073741824 --idls_group_size 16777216 --num_scans 16 -d apma_sequential --beta 134217728 -a apma_int3 -b 65 -l 128 --hugetlb --extent_size 1 -v
 # Static dense arrays, source code: abtree/static_abtree.*
-./pmacomp -e step_insert_scan --initial_size 16777216 -I 1073741824 --idls_group_size 16777216 --num_scans 16 -d uniform -a static -b 64 -v
+./pmacomp -e step_insert_scan --initial_size 16777216 -I 1073741824 --idls_group_size 16777216 --num_scans 16 -d uniform -a dense_array -l 64 --hugetlb -v
 ```
 
 ##### Aging

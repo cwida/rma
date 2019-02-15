@@ -53,7 +53,7 @@
 
 #include "abtree/abtree.hpp"
 #include "abtree/art.hpp"
-#include "abtree/static_abtree.hpp"
+#include "abtree/dense_array.hpp"
 #include "abtree/stx-btree.hpp"
 
 #include "btree/btreepma_v2.hpp"
@@ -110,21 +110,9 @@ void initialise() {
     });
 #endif
 
-//    REGISTER_PMA("pma_v1", "Basic packed memory array, v1", [](){
-//       return make_unique<PMA_Impl1>();
-//    });
-//    REGISTER_PMA("pma_v2", "Basic packed memory array, v2", [](){
-//       return make_unique<PMA_Impl2>();
-//    });
-//    REGISTER_PMA("pma_v3", "Basic packed memory array, v3", [](){
-//       return make_unique<PMA_Impl3>();
-//    });
     REGISTER_PMA("pma_v4", "Basic packed memory array, v4", [](){
        return make_unique<PMA_Impl4>();
     });
-//    REGISTER_PMA("pma_2levels", "Packed Memory Array on two levels. The second level contains the actual elements, while the first level acts as an index. The max number of elements per key indexed by the first element is set by the parameter -b", [](){
-//        return make_unique<PMA_2Levels>(ARGREF(uint64_t, "iB"));
-//    });
     REGISTER_PMA("btree_v2", "Dynamic AB-tree, version 2", [](){
         auto iB = ARGREF(uint64_t, "inode_block_size").get();
         auto iA = iB / 2;
@@ -153,11 +141,12 @@ void initialise() {
         return art;
     });
 
-    REGISTER_PMA("static", "Static AB-tree, version 1", [](){
+    REGISTER_PMA("dense_array", "Static dense arrays. It can be used in conjunction with huge pages.", [](){
         auto iB = ARGREF(uint64_t, "inode_block_size").get();
+        LOG_VERBOSE("[dense_array] Parameter inode_block_size ignored: " << iB);
         auto lB = ARGREF(uint64_t, "leaf_block_size").get();
-        LOG_VERBOSE("[Static] inode block size: " << iB << ", leaf block size: " << lB);
-        return make_unique<abtree::StaticABTree>(iB, lB);
+        LOG_VERBOSE("[dense_array] block size: " << lB << ", huge pages: " << (configuration::use_huge_pages() ? "true" : "false"));
+        return make_unique<abtree::DenseArray>(lB);
     });
 
     PARAMETER(bool, "abtree_random_permutation")

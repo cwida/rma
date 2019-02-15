@@ -1,14 +1,12 @@
-
-
 #include <iostream>
 #include <memory>
 #include <utility>
 
 #define CATCH_CONFIG_MAIN
 #include "third-party/catch/catch.hpp"
-#include "pma/btree/stx-btree.hpp"
+#include "abtree/stx-btree.hpp"
 
-using namespace pma;
+using namespace abtree;
 using namespace std;
 
 TEST_CASE("basic"){

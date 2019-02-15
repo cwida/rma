@@ -56,7 +56,7 @@ sources := \
 	rewired_memory.cpp \
 	abtree/abtree.cpp \
 	abtree/art.cpp \
-	abtree/static_abtree.cpp \
+	abtree/dense_array.cpp \
 	abtree/stx-btree.cpp \
 	distribution/apma_distributions.cpp \
 	distribution/cbytearray.cpp \

@@ -1,7 +1,7 @@
 /*
- * test_static_abtree.cpp
+ * test_dense_array.cpp
  *
- *  Created on: 17 Jan 2018
+ *  Created on: 9 Jan 2019
  *      Author: Dean De Leo
  */
 
@@ -12,14 +12,14 @@
 #define CATCH_CONFIG_MAIN
 #include "third-party/catch/catch.hpp"
 
-#include "abtree/static_abtree.hpp"
+#include "abtree/dense_array.hpp"
 
 using namespace abtree;
 using namespace pma;
 using namespace std;
 
 TEST_CASE("sanity"){
-    auto driver0 = make_shared<StaticABTree>(4, 4);
+    auto driver0 = make_shared<DenseArray>(4);
     REQUIRE(driver0->size() == 0);
     driver0->insert(1, 10);
     driver0->insert(3, 30);
@@ -52,10 +52,31 @@ TEST_CASE("sanity"){
     }
 }
 
+TEST_CASE("merge"){
+    DenseArray denseArray{7};
+
+    REQUIRE(denseArray.empty() == true);
+    REQUIRE(denseArray.size() == 0);
+
+    for(int j = 0; j <= 9; j++){
+        for(int i = 1 + j; i <= 100; i += 10){
+            denseArray.insert(i, i * 100);
+        }
+        denseArray.build();
+    }
+
+    REQUIRE(denseArray.empty() == false);
+    REQUIRE(denseArray.size() == 100);
+
+    for(int i = 1; i <= 100; i++){
+        REQUIRE(denseArray.find(i) == (i*100));
+    }
+}
+
 TEST_CASE("find_range_dense"){
     constexpr size_t sz = 344; // 7 * 7 * 7 + 1
 
-    pma::StaticABTree B{7, 5};
+    DenseArray B{7};
     for(int i = 1; i <= sz; i++){
         B.insert(i, i * 100);
     }
@@ -98,13 +119,12 @@ TEST_CASE("find_range_dense"){
             }
         }
     }
-
 }
 
 TEST_CASE("find_range_with_gaps"){
     constexpr size_t sz = 344; // 7 * 7 * 7 + 1
 
-    pma::StaticABTree B{7, 5};
+    DenseArray B{8};
     for(int i = 1; i <= sz; i++){
         B.insert(2 * i, 2 * i * 100);
     }
@@ -159,7 +179,7 @@ TEST_CASE("find_range_with_gaps"){
 
 // copy & paste from test_btreepmacc4.cpp
 TEST_CASE("duplicates"){
-    StaticABTree btree{8, 16};
+    DenseArray btree{8};
 
     // insert the elements
     size_t cardinality = 0;
@@ -252,7 +272,7 @@ TEST_CASE("duplicates"){
 TEST_CASE("find_range_with_duplicates"){
     constexpr size_t num_duplicates = 100;
     constexpr size_t num_keys = 17;
-    StaticABTree tree{16, 16};
+    DenseArray tree{16};
 
     for(int i = 0; i < num_duplicates; i++){
         for(int j = 0; j < num_keys; j++){
@@ -275,8 +295,8 @@ TEST_CASE("find_range_with_duplicates"){
 }
 
 TEST_CASE("sum"){
-    using Implementation = StaticABTree;
-    shared_ptr<Implementation> implementation{ new Implementation{16, 16} };
+    using Implementation = DenseArray;
+    shared_ptr<Implementation> implementation{ new Implementation{16} };
 
 //    size_t sz = 1033;
 //    for(size_t i = 1; i <= sz; i++){
