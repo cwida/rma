@@ -2,7 +2,7 @@
 Introduction
 ---
 
-This is the preliminary source code for the experiments in the paper ''Packed memory arrays - Rewired''. It 
+This is the source code of the implementation and the experiments featured in the paper ''Packed memory arrays - Rewired''. It 
 consists of a single program, `pmacomp`, inclusive of the data structures tested and the code to run the simulations.
 Since the program makes use of a few O.S. dependent constructs (`libnuma`, `memfd_create`), it only supports Linux.
 
@@ -34,7 +34,7 @@ mkdir build && cd build
 make -j
 ```
 
-Note: there is no "install" target.
+There is no "install" target.
 
 ---
 Running the driver
